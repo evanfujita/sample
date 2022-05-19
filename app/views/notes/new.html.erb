@@ -1,0 +1,12 @@
+<h1>Add Note</h1>
+
+<%= form_with model: @note do |form| %>
+    <%= form.label :title, "Title" %>
+    <%= form.text_field :title %>
+    <%= form.label :body, "Body" %>
+    <%= form.text_field :body %>
+    <%= form.label :lesson, "Lesson" %>
+    <%= form.text_field :lesson %>
+    <%= form.submit "Submit" %>
+  <% end %>
+
