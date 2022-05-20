@@ -7,8 +7,11 @@ class DailyUpdatesController < ApplicationController
 
     def new
       current_date = helpers.display_formatted_date(Time.now)
-      daily_update = DailyUpdate.first_or_initialize(created_at: current_date)
-      daily_update.save
+      @daily_update = DailyUpdate.first_or_initialize(created_at: current_date)
+    end
+
+    def create
+      @daily_update = DailyUpdate.create
     end
 
     def index

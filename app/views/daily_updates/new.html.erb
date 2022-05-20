@@ -1,1 +1,8 @@
-<h1>New Home</h1>
+<h1>Welcome to <%= Time.now.strftime("%A")%></h1>
+
+<%= form_with model: @daily_update do |form| %>
+  <%= form.label :title, 'Title' %>
+  <%= form.text_field :title, value: @daily_update.title || 'Something' %>
+
+  <%= form.submit 'Submit' %>
+<% end %>
