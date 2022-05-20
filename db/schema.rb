@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_19_233907) do
+ActiveRecord::Schema.define(version: 2022_05_20_015153) do
+
+  create_table "daily_lessons", force: :cascade do |t|
+    t.integer "daily_update_id"
+    t.integer "lesson_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "daily_notes", force: :cascade do |t|
+    t.integer "note_id"
+    t.integer "daily_update_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "daily_updates", force: :cascade do |t|
+    t.integer "daily_lesson_id"
+    t.integer "daily_note_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "lessons", force: :cascade do |t|
     t.string "title"
