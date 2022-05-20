@@ -3,7 +3,6 @@ class CreateLessons < ActiveRecord::Migration[6.1]
     create_table :lessons do |t|
       t.string :title
       t.string :body
-      t.integer :note_id
 
       t.timestamps
     end

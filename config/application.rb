@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module WorkNotes
   class Application < Rails::Application
+
+    config.standard_date_format = '%m.%d.%Y'
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
