@@ -1,4 +1,15 @@
 <h1> INDEX </h1>
-<% @daily_updates.map do |daily_update| %>
-  <%= link_to display_formatted_date(daily_update.created_at), daily_update_path(daily_update) %>
-<% end %>
+
+<div>
+  <ul>
+    <% @daily_updates.map do |daily_update| %>
+      <li>
+        <%= link_to display_formatted_date(daily_update.created_at), daily_update_path(daily_update) %>
+      </li>
+  <% end %>
+  </ul>
+</div>
+
+<div>
+  <%= link_to 'Home', root_path %>
+</div>

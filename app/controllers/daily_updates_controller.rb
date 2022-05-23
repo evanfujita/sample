@@ -1,36 +1,40 @@
 class DailyUpdatesController < ApplicationController
+
+    before_action :find_or_create
+
     def home
-      today = helpers.display_formatted_date(Time.now)
-      d = DailyUpdate.new(daily_update_params)
-      byebug
+        # byebug
     end
 
     def new
-      current_date = helpers.display_formatted_date(Time.now)
-      @daily_update = DailyUpdate.first_or_initialize(created_at: current_date)
+      byebug
     end
 
     def create
-      @daily_update = DailyUpdate.create
+      byebugd
     end
 
     def index
       @daily_updates = DailyUpdate.all
     end
 
-    def show
-      @daily_update = DailyUpdate.where(params[:id]).includes(:lessons, :notes).first
+    def update
+      @daily_update.update(daily_update_params)
+      redirect_to root_path
     end
 
-    def create
-      date = helpers.display_formatted_date(Time.now)
-      @daily_update.new()
+    def show
     end
 
     private
 
-    def daily_update_params(created_at=helpers.display_formatted_date(Time.now) )
-      params.require(:daily_update).permit(:created_at)
+    def daily_update_params
+      params.require(:daily_update).permit(:title, notes_attributes: [:body], lessons_attributes: [:body])
+    end
+
+    def find_or_create
+      current_date = helpers.display_formatted_date(Time.now)
+      @daily_update = DailyUpdate.find_or_create_by(date: current_date)
     end
 
 end

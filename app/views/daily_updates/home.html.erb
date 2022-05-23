@@ -1,2 +1,42 @@
-<h1> <%= display_formatted_date(Time.new) %> </h1>
-<h2> </h2>
+<div id='header'>
+  <h1><%= Time.now.strftime("%A")%> Notes</h1>
+  <h3><%= Time.now.strftime("%m.%d.%Y") %></h3>
+</div>
+
+<div id='body'>
+  <%= form_for @daily_update do |form| %>
+  <div>
+    <%= form.label :title, 'Title' %>
+    <%= form.text_field :title, placeholder: 'title' %>
+  </div>
+
+  <ul>
+    <%= form.fields_for :note do |note_form| %>
+      <li>
+        <%= note_form.label :body, 'Note' %>
+        <%= note_form.text_field :body %>
+      </li>
+    <% end %>
+  </ul>
+
+  <ul>
+    <%= form.fields_for :lesson do |lesson_form| %>
+      <li>
+        <%= lesson_form.label :body, 'Lesson' %>
+        <%= lesson_form.text_field :body %>
+      </li>
+    <% end %>
+  </ul>
+  
+  <div>
+    <%= form.submit 'Submit' %>
+  </div>
+  
+  <% end %>
+</div>
+  
+<div id='footer'>
+  <p>
+    <%= link_to 'All Daily Updates', daily_updates_path %>
+  </p>
+</div>

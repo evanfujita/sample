@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :lessons
   resources :notes
 
-  root to: 'daily_updates#new'
+  root to: 'daily_updates#home'
 end
