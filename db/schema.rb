@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2022_05_20_015153) do
   end
 
   create_table "daily_updates", force: :cascade do |t|
-    t.string "title"
     t.string "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -41,12 +40,11 @@ ActiveRecord::Schema.define(version: 2022_05_20_015153) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.string "date"
-    t.string "title"
-    t.string "body"
-    t.string "lesson"
+    t.text "body", default: ""
+    t.integer "daily_update_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "note_type", default: "notion"
   end
 
 end

@@ -1,4 +1,5 @@
 class Note < ApplicationRecord
-  has_many :daily_notes
-  has_many :daily_updates, through: :daily_notes
+  belongs_to :daily_update
+
+  enum note_type: {preview: 'Preview', notion: 'Notion', recap: 'Recap'}
 end
